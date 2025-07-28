@@ -48,7 +48,7 @@ ENV DB_MGE_HOST="" \
     DB_MGE_USR="" \
     DB_MGE_PW=""
 
-ADD --chown=tf2:tf2 tf2_ds.txt cleanimage.sh cleandemo.sh update.sh mge.sh runtime.sh tf.sh $SERVER/
+ADD --chown=tf2:tf2 tf2_ds.txt cleanimage.sh cleandemo.sh update.sh mge.sh runtime.sh tf.sh server.cfg $SERVER/
 RUN chmod +x $SERVER/cleanimage.sh \
     $SERVER/cleandemo.sh \
     $SERVER/update.sh \
@@ -60,9 +60,8 @@ RUN mkdir -p $SERVER/tf2 \
 	&& ln -s /usr/games/steamcmd $SERVER/steamcmd.sh \
 	&& $SERVER/update.sh \
 	&& $SERVER/cleanimage.sh \
-    && $SERVER/mge.sh
-
-ADD --chown=tf2:tf2 server.cfg $SERVER/tf2/tf/cfg/
+    && $SERVER/mge.sh \
+    && mv $SERVER/server.cfg $SERVER/tf2/tf/cfg/
 
 EXPOSE 27015/udp 27015/tcp 27021/tcp 27020/udp
 
