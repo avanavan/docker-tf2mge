@@ -49,7 +49,6 @@ SB_WEBHOOK=
 
 - **27015/udp & tcp**: Game server
 - **27020/udp**: SourceTV
-- **27021/tcp**: RCON (not exposed by default)
 
 ## Included Plugins
 
