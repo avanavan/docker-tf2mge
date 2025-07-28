@@ -4,18 +4,18 @@ services:
     container_name: mge
     restart: unless-stopped
     # Map it or bind it to host
-    ports:
-      - "27015:27015/udp"
-      - "27015:27015/tcp"
-      - "27020:27020/udp"
-    # network_mode: "host"
+    # ports:
+    #   - "27015:27015/udp"
+    #   - "27015:27015/tcp"
+    #   - "27020:27020/udp"
+    network_mode: "host"
 
     environment:
-      - HOSTNAME=Docker MGE Server
+      - HOSTNAME="Docker MGE Server"
       - MGE_MAP=mge_training_v8_beta4b
-      - SV_PASSWORD=dockermge
-      - RCON_PASSWORD=changeme123
-      - SV_DOWNLOADURL=https://fastdl.serveme.tf/
+      - SV_PASSWORD="dockermge"
+      - RCON_PASSWORD="changeme123"
+      - SV_DOWNLOADURL="https://fastdl.serveme.tf/"
       - SB_WEBHOOK=
       - TV_NAME=DockerTV
       
