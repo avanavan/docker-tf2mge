@@ -16,7 +16,6 @@ services:
       - SV_PASSWORD="dockermge"
       - RCON_PASSWORD="changeme123"
       - SV_DOWNLOADURL="https://fastdl.serveme.tf/"
-      - SB_WEBHOOK=
       - TV_NAME=DockerTV
       
       # SourceBans Database (optional - leave empty for no database)
@@ -25,6 +24,9 @@ services:
       - DB_SB_NAME=
       - DB_SB_USR=
       - DB_SB_PW=
+      - SB_WEBHOOK=
+      - SB_WEBSITE=
+      - SB_SERVERID=
       
       # MGE Database (optional - will use SQLite if not specified)
       - DB_MGE_HOST=
@@ -32,8 +34,6 @@ services:
       - DB_MGE_NAME=
       - DB_MGE_USR=
       - DB_MGE_PW=
-    volumes:
-      - tf2_data:/home/tf2/hlserver/tf2/tf
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -49,7 +49,3 @@ services:
       - WATCHTOWER_POLL_INTERVAL=3600  # Seconds (1 hr)
       - WATCHTOWER_LABEL_ENABLE=true
       - WATCHTOWER_INCLUDE_RESTARTING=true
-
-volumes:
-  tf2_data:
-    driver: local

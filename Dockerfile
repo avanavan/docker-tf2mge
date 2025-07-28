@@ -33,14 +33,16 @@ ENV HOSTNAME="" \
     SV_PASSWORD="" \
     RCON_PASSWORD="" \
     SV_DOWNLOADURL="" \
-    SB_WEBHOOK="" \
     TV_NAME=""
 
 ENV DB_SB_HOST="" \
     DB_SB_PORT="3306" \
     DB_SB_NAME="" \
     DB_SB_USR="" \
-    DB_SB_PW=""
+    DB_SB_PW="" \
+    SB_WEBHOOK="" \
+    SB_WEBSITE="" \
+    SB_SERVERID=""
 
 ENV DB_MGE_HOST="" \
     DB_MGE_PORT="3306" \

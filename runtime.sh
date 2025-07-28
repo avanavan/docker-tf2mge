@@ -11,7 +11,9 @@ echo "sv_password ${SV_PASSWORD:-DOCKERMGE}" >> ${CFG}
 echo "rcon_password ${RCON_PASSWORD:-}" >> ${CFG}
 echo "sv_downloadurl ${SV_DOWNLOADURL:-https://fastdl.serveme.tf/}" >> ${CFG}
 echo "sbpp_discord_banhook ${SB_WEBHOOK:-}" >> ${CFG}
-echo "tv_name ${TV_NAME:-SourceTV}" >> ${CFG}
+
+# tv name is servercfgfile
+echo "tv_name ${TV_NAME:-SourceTV}" >> $HOME/hlserver/tf2/tf/cfg/server.cfg
 
 # Mapcycle for the appointed map
 touch $HOME/hlserver/tf2/tf/cfg/mapcycle_mge.cfg
@@ -84,3 +86,18 @@ cat > ${DB_CFG} << EOF
 $MGE_CONFIG
 }
 EOF
+
+# Edit sourcebans.cfg
+SB_CFG="$HOME/hlserver/tf2/tf/addons/sourcemod/configs/sourcebans/sourcebans.cfg"
+
+if [ -f "$SB_CFG" ]; then
+    # Update Website URL
+    if [ -n "$SB_WEBSITE" ]; then
+        sed -i "s|\"Website\".*|\"Website\"                       \"$SB_WEBSITE\"|" "$SB_CFG"
+    fi
+    
+    if [ -n "$SB_SERVERID" ]; then
+        sed -i "s|\"ServerID\".*|\"ServerID\"              \"$SB_SERVERID\"|" "$SB_CFG"
+    fi
+fi
+

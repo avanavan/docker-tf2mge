@@ -31,26 +31,23 @@ RCON_PASSWORD=changeme123
 SV_DOWNLOADURL=https://fastdl.serveme.tf/
 TV_NAME=DockerTV
 
+# SourceBans Database (Optional)
+DB_SB_HOST=abc-db.com
+DB_SB_NAME=sourcebans
+DB_SB_USR=username
+DB_SB_PW=password
+SB_WEBHOOK=https://epicwebsite.com/webhook
+SB_WEBSITE=https://epicwebsite.com/
+SB_SERVERID=69
+
 # MGE Database (leave DB_MGE_HOST empty for SQLite)
 DB_MGE_HOST="abc-db.com"
 DB_MGE_NAME="mgemod"
 DB_MGE_USR="username"
 DB_MGE_PW="password"
-
-# SourceBans Database (Optional)
-DB_SB_HOST="abc-db.com"
-DB_SB_NAME="sourcebans"
-DB_SB_USR="username"
-DB_SB_PW="password"
-SB_WEBHOOK=
 ```
 
-## Ports
-
-- **27015/udp & tcp**: Game server
-- **27020/udp**: SourceTV
-
-## Included Plugins
+## Plugins
 
 - **SourceMod** 
 - **MetaMod**
