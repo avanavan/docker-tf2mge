@@ -1,2 +1,2 @@
 # docker-tf2mge
-Dockerfile for continuous running of MGEmod
+Dockerfile for running MGEmod
