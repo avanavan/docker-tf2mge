@@ -6,12 +6,12 @@ touch $HOME/hlserver/tf2/tf/cfg/custom.cfg
 CFG="$HOME/hlserver/tf2/tf/cfg/custom.cfg"
 
 echo "// ENV for server.cfg" > ${CFG}
-echo "hostname \"${HOSTNAME:-Docker MGE Server}\"" >> ${CFG}
-echo "sv_password \"${SV_PASSWORD:-DOCKERMGE}\"" >> ${CFG}
-echo "rcon_password \"${RCON_PASSWORD:-}\"" >> ${CFG}
-echo "sv_downloadurl \"${SV_DOWNLOADURL:-https://fastdl.serveme.tf/}\"" >> ${CFG}
-echo "sbpp_discord_banhook \"${SB_WEBHOOK:-}\"" >> ${CFG}
-echo "tv_name \"${TV_NAME:-SourceTV}\"" >> ${CFG}
+echo "hostname ${HOSTNAME:-Docker MGE Server}" >> ${CFG}
+echo "sv_password ${SV_PASSWORD:-DOCKERMGE}" >> ${CFG}
+echo "rcon_password ${RCON_PASSWORD:-}" >> ${CFG}
+echo "sv_downloadurl ${SV_DOWNLOADURL:-https://fastdl.serveme.tf/}" >> ${CFG}
+echo "sbpp_discord_banhook ${SB_WEBHOOK:-}" >> ${CFG}
+echo "tv_name ${TV_NAME:-SourceTV}" >> ${CFG}
 
 # Mapcycle for the appointed map
 touch $HOME/hlserver/tf2/tf/cfg/mapcycle_mge.cfg
