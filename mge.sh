@@ -38,7 +38,7 @@ rm tf2-comp-fixes.zip
 
 # Sourcebans
 wget -nv https://github.com/sbpp/sourcebans-pp/releases/download/Plugins-Latest/sourcebans-pp-Plugins-Latest.tar.gz
-tar -xvzf sourcebans-pp-Plugins-Latest.tar.gz --strip-components=1 common/
+tar -xvzf sourcebans-pp-Plugins-Latest.tar.gz --strip-components=2 common/addons/
 
 rm sourcebans-pp-Plugins-Latest.tar.gz
 
