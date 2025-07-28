@@ -1,14 +1,15 @@
-version: '3.8'
-
 services:
   tf2-mge:
     image: avanavan/docker-tf2mge:latest
-    container_name: tf2-mge-server
+    container_name: mge
     restart: unless-stopped
+    # Map it or bind it to host
     ports:
       - "27015:27015/udp"
       - "27015:27015/tcp"
       - "27020:27020/udp"
+    # network_mode: "host"
+
     environment:
       - HOSTNAME=Docker MGE Server
       - MGE_MAP=mge_training_v8_beta4b
@@ -32,20 +33,20 @@ services:
       - DB_MGE_USR=
       - DB_MGE_PW=
     volumes:
-      # Optional: Persist server data and configs
-      - tf2_data:/home/tf2/hlserver/tf2/tf
+      # Optional, bind mount
+      - ./tf2-server-data:/home/tf2/hlserver/tf2/tf
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
   watchtower:
     image: containrrr/watchtower:latest
     container_name: watchtower
-    restart: no
+    restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     environment:
       - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_RUN_ONCE=true # debug
+      # - WATCHTOWER_RUN_ONCE=true # debug
       - WATCHTOWER_POLL_INTERVAL=3600  # Seconds (1 hr)
       - WATCHTOWER_LABEL_ENABLE=true
       - WATCHTOWER_INCLUDE_RESTARTING=true

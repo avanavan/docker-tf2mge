@@ -36,6 +36,12 @@ unzip -o tf2-comp-fixes.zip
 
 rm tf2-comp-fixes.zip
 
+# Sourcebans
+wget -nv https://github.com/sbpp/sourcebans-pp/releases/download/Plugins-Latest/sourcebans-pp-Plugins-Latest.tar.gz
+tar -xvzf sourcebans-pp-Plugins-Latest.tar.gz --strip-components=1 common/
+
+rm sourcebans-pp-Plugins-Latest.tar.gz
+
 # STAC
 cd $HOME/hlserver/tf2/tf/addons/sourcemod
 

@@ -6,10 +6,17 @@ on:
     push:
         branches:
         - "main"
+        paths:
+        - "*.sh"
+        - "*.yml"
+        - "*.yaml"
+        - "*.cfg"
+        - "*.txt"
+        - "Dockerfile"
     workflow_dispatch:
 
 jobs:
-    docker:
+    build-and-push:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout repository
