@@ -56,7 +56,7 @@ RUN chmod +x $SERVER/cleanimage.sh \
     $SERVER/runtime.sh \
     $SERVER/tf.sh
 
-ADD --chown=tf2:tf2 server.cfg $SERVER/tf/cfg/
+ADD --chown=tf2:tf2 server.cfg $SERVER/tf2/tf/cfg/
 
 RUN mkdir -p $SERVER/tf2 \
 	&& ln -s /usr/games/steamcmd $SERVER/steamcmd.sh \
