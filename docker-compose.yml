@@ -33,8 +33,7 @@ services:
       - DB_MGE_USR=
       - DB_MGE_PW=
     volumes:
-      # Optional, bind mount
-      - ./tf2-data:/home/tf2/hlserver/tf2/tf
+      - tf2_data:/home/tf2/hlserver/tf2/tf
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
@@ -50,3 +49,7 @@ services:
       - WATCHTOWER_POLL_INTERVAL=3600  # Seconds (1 hr)
       - WATCHTOWER_LABEL_ENABLE=true
       - WATCHTOWER_INCLUDE_RESTARTING=true
+
+volumes:
+  tf2_data:
+    driver: local
