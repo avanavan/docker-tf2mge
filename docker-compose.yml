@@ -1,6 +1,8 @@
 services:
   tf2-mge:
     image: avanavan/docker-tf2mge:latest
+    # If unable to pull, uncomment the one below and comment the above
+    # image: ghcr.io/avanavan/docker-tf2mge:latest
     container_name: mge
     restart: unless-stopped
     # Map it or bind it to host

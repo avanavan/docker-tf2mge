@@ -19,6 +19,9 @@ on:
 jobs:
     build-and-push:
         runs-on: ubuntu-latest
+        permissions:
+          contents: read
+          packages: write
         steps:
         - name: Checkout repository
           uses: actions/checkout@v4
@@ -42,7 +45,7 @@ jobs:
           with:
             images: |
               docker.io/avanavan/docker-tf2mge
-              ghcr.io/${{ github.repository }}
+              ghcr.io/avanavan/docker-tf2mge
             tags: |
               type=ref,event=branch
               type=ref,event=pr
