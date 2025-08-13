@@ -24,9 +24,8 @@ ENV DB_MGE_HOST="" \
     DB_MGE_USR="" \
     DB_MGE_PW=""
 
-ADD --chown=tf2:tf2 cleandemo.sh update.sh mge.sh runtime.sh tf.sh server.cfg $SERVER/
+ADD --chown=tf2:tf2 cleandemo.sh mge.sh runtime.sh tf.sh server.cfg $SERVER/
 RUN chmod +x $SERVER/cleandemo.sh \
-    $SERVER/update.sh \
     $SERVER/mge.sh \
     $SERVER/runtime.sh \
     $SERVER/tf.sh
