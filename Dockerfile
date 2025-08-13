@@ -30,9 +30,7 @@ RUN chmod +x $SERVER/cleandemo.sh \
     $SERVER/runtime.sh \
     $SERVER/tf.sh
 
-RUN mkdir -p $SERVER/tf2 \
-	&& ln -s /usr/games/steamcmd $SERVER/steamcmd.sh \
-    && $SERVER/mge.sh \
+RUN $SERVER/mge.sh \
     && mv $SERVER/server.cfg $SERVER/tf2/tf/cfg/
 
 EXPOSE 27015/udp 27015/tcp 27021/tcp 27020/udp
