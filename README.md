@@ -18,9 +18,7 @@ docker run -d \
 
 ## Configuration
 
-### Database Configuration (Optional)
-
-For MGE stats and SourceBans integration:
+### Environment Variables
 
 ```bash
 # Basic

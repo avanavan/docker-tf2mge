@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-cd $HOME/hlserver/tf2/tf
 mm_url=$(wget -q -O - "https://www.metamodsource.net/downloads.php?branch=master" | grep -oP -m1 "https://[a-z.]+/mmsdrop/[0-9.]+/mmsource-(.*)-linux.tar.gz")
 sm_url=$(wget -q -O - "http://www.sourcemod.net/downloads.php?branch=master" | grep -oP -m1 "https://[a-z.]+/smdrop/[0-9.]+/sourcemod-(.*)-linux.tar.gz")
 wget -nv $mm_url
@@ -14,6 +13,16 @@ rm *.tar.gz
 
 # prevent automatic map switch
 rm addons/sourcemod/plugins/{nextmap.smx,funcommands.smx,funvotes.smx}
+
+# Remove useless maps and cfg
+cd $SERVER/tf2/tf/maps
+rm -f *.bsp || true
+
+cd $SERVER/tf2/tf/cfg
+rm -f * || true
+
+cd $SERVER/tf2/tf
+rm -f resource/tf_*.txt || true
 
 # Install MGEmod and Maps
 MGEMOD_VERSION="v3.0.9"

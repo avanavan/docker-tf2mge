@@ -1,31 +1,5 @@
-FROM ubuntu:22.04
+FROM ghcr.io/matcha-bookable/docker-tf2-server:latest
 LABEL maintainer="avan"
-
-# Credit: https://github.com/spiretf/docker-tf2-server/blob/master/Dockerfile
-RUN echo steam steam/question select "I AGREE" | debconf-set-selections \
-	&& echo steam steam/license note '' | debconf-set-selections \
-	&& apt-get -y update \
-    && apt-get -y install curl \
-	&& apt-get -y install software-properties-common \
-	&& add-apt-repository multiverse \
-	&& dpkg --add-architecture i386 \
-	&& apt-get update && DEBIAN_FRONTEND=noninteractive apt-get -y install libstdc++6 libcurl3-gnutls wget libncurses5 bzip2 unzip vim nano lib32gcc-s1 lib32stdc++6 steamcmd  \
-	&& apt-get install -y --no-install-recommends --no-install-suggests \
-		ca-certificates \
-		lib32z1 \
-		libncurses5:i386 \
-		libbz2-1.0:i386 \
-		libtinfo5:i386 \
-		libcurl3-gnutls:i386 \
-	&& apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
-	&& useradd -m tf2 \
-	&& su tf2 -c '/usr/games/steamcmd +quit'
-
-USER tf2
-
-ENV USER=tf2
-ENV HOME=/home/$USER
-ENV SERVER=$HOME/hlserver
 
 # ENV
 ENV HOSTNAME="" \
@@ -50,9 +24,8 @@ ENV DB_MGE_HOST="" \
     DB_MGE_USR="" \
     DB_MGE_PW=""
 
-ADD --chown=tf2:tf2 tf2_ds.txt cleanimage.sh cleandemo.sh update.sh mge.sh runtime.sh tf.sh server.cfg $SERVER/
-RUN chmod +x $SERVER/cleanimage.sh \
-    $SERVER/cleandemo.sh \
+ADD --chown=tf2:tf2 cleandemo.sh update.sh mge.sh runtime.sh tf.sh server.cfg $SERVER/
+RUN chmod +x $SERVER/cleandemo.sh \
     $SERVER/update.sh \
     $SERVER/mge.sh \
     $SERVER/runtime.sh \
@@ -60,8 +33,6 @@ RUN chmod +x $SERVER/cleanimage.sh \
 
 RUN mkdir -p $SERVER/tf2 \
 	&& ln -s /usr/games/steamcmd $SERVER/steamcmd.sh \
-	&& $SERVER/update.sh \
-	&& $SERVER/cleanimage.sh \
     && $SERVER/mge.sh \
     && mv $SERVER/server.cfg $SERVER/tf2/tf/cfg/
 
